@@ -112,8 +112,7 @@ translateApp.controller('historyController', function($scope, $http, translation
         // console.log($scope.langs);
         // $scope.$apply();
     }, function error(respnse) {
-
-        
+        console.log(response);
     })
 
 
@@ -195,8 +194,8 @@ translateApp.service('translationService', function($http, $rootScope, $location
             $location.path('/result')
 
             // $scope.$apply();
-        }, function error(respnse) {
-    
+        }, function error(response) {
+            console.log(response);
         })
 
     }

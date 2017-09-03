@@ -25,8 +25,8 @@ SECRET_KEY = 'f4=m=*u($d@380i!*e2y)ploteow)hrj83h^4njy)q^o^f1nlz'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [ 'translator.us-west-2.elasticbeanstalk.com' ]
-
+# ALLOWED_HOSTS = [ 'localhost', 'translator.us-west-2.elasticbeanstalk.com' ]
+ALLOWED_HOSTS = []
 
 # Application definition
 

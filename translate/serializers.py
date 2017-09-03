@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from translate.models import Translation
-from django.contrib.auth.models import User
+
 
 class TranslationSerializer(serializers.ModelSerializer):
     source_text = serializers.CharField()

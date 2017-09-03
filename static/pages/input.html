@@ -1,6 +1,6 @@
 <div class="container-fuild input-container"> 
 
-    <div class="col-md-4 col-md-offset-4">
+    <div class="col-sm-6 col-sm-offset-3 col-lg-4 col-lg-offset-4">
      
         <div class="row textarea-row">
             <textarea
@@ -15,14 +15,17 @@
                 ng-model="target_lang" 
                 class="language-dropdown">
                 <option value="">---Select Language---</option>
-                <option ng-repeat="(key, val) in getLanguage()" value="{{ key }}">{{ val }}</option>
+                <option ng-repeat="pair in getLanguage() | orderBy: pair[0] " value="{{ pair[1] }}">{{ pair[0] }}</option>
             </select>
         </div>
 
         <div class="row submit-row">
             <button 
                 class=""
-                ng-click="translate()">Submit</button>
+                ng-click="translate()">
+                <img class="wait" ng-show="isWaiting()" src="static/images/ellipsis.svg"/>
+                <span ng-show="!isWaiting()">Submit</span>
+            </button>
         </div>
 
         <div class="row message-row">
@@ -32,9 +35,8 @@
                 role="alert">{{ status.translate.warning }}</div>
             <div
                 ng-show="hasError()" 
-                class="alert alert-error" 
+                class="alert alert-danger" 
                 role="alert">{{ status.translate.error }}</div>
         </div>
-    
     </div>
 </div>

@@ -11,43 +11,35 @@ from rest_framework.renderers import JSONRenderer
 
 from rest_framework.views import APIView
 
-# from persmissions import IsOwnerOrReadOnly
-
-# Create your views here.
-def input(request):
-    html_var = 'f string'
-    return render(request, "input.html", { "html_var" : html_var })
+API_KEY = 'trnsl.1.1.20170902T190110Z.7ef50fbe6569ffd2.627f39cfa989999b2e20ed73921e10747ecc38cc'
 
 def base(request):
     return render(request, "base.html")
 
-# Create your views here.
-def result(request):
-    html_var = 'f string'
-    return render(request, "result.html", { "html_var" : html_var })
-
-API_KEY = 'trnsl.1.1.20170902T190110Z.7ef50fbe6569ffd2.627f39cfa989999b2e20ed73921e10747ecc38cc'
-
 class LanguageViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = LanguageSerializer
 
-
+    # Get list of supported languages
     def list(self, request, format=None):
-        
-        # print(request.data)
-
+        # Parameters for GET request
         params = urllib.parse.urlencode({
             'key': API_KEY, 
             'ui': 'en'
         })
 
+        # Construct URL
         url = "https://translate.yandex.net/api/v1.5/tr.json/getLangs?%s" % params
-        print(url)
+
+        # Interpret response
         f = urllib.request.urlopen(url)
         with urllib.request.urlopen(url) as f:
             data = f.read().decode('utf-8')
-
+        if not data:
+            Response(500)
+        # Deserialize data
         data = json.loads(data)
+
+        # Return languages to client
         return Response(data)
 
     def get_queryset(self):
@@ -60,48 +52,41 @@ class LanguageViewSet(viewsets.ReadOnlyModelViewSet):
 class TranslationViewSet(viewsets.ModelViewSet):
     queryset = Translation.objects.all()
     serializer_class = TranslationSerializer
-    print('look here')
-    # permission_classes = (IsOwnerOrReadOnly,)
-    # @list_route(methods=['post','get'])
-    # def list(self, request, pk=None):   
-    #     data = serializer_class(queryset)
-    #     # data = 'Hello There'
-    #     # print('this is happening')
-    #     return Response(data)
-
-    # var url = 'https://translate.yandex.net/api/v1.5/tr.json/getLangs?'
     
-    # key=<API key>
-    #  & [ui=<language code>]
-    #  & [callback=<name of the callback function>]
-
-
+    # Customize POST method
     def create(self, request):
-        print(request)
+        # Get relevant data from request
         source_text = request.data['source_text']
         target_lang = request.data['target_lang']
-        print(request.data)
-
+    
+        # Get params for GET request
         params = urllib.parse.urlencode({
             'key': API_KEY, 
             'text': source_text, 
             'lang': target_lang
         })
+
+        # Construct URL
         url = 'https://translate.yandex.net/api/v1.5/tr.json/translate?%s' % params 
-        print(url)
+        
+        # Perform GET request to Yandex, decode result
         f = urllib.request.urlopen(url)
         with urllib.request.urlopen(url) as f:
             data = f.read().decode('utf-8')
-        print(data)
-
+        
+        # Respond with error if request failed
+        if not data:
+            Response(500)
+        
+        # Deserialize data
         data = json.loads(data)
 
+        # Aquire record values
         lang = data['lang'].split('-')
         target_text = data['text'][0]
         source_lang = lang[0]
 
-        print(source_text, target_text, source_lang, target_lang)
-
+        # Save translation to database
         record = Translation.objects.create(
             source_text=source_text,
             target_text=target_text,
@@ -109,21 +94,7 @@ class TranslationViewSet(viewsets.ModelViewSet):
             target_lang=target_lang
         )
 
+        # Serialize and return data to client
         serializer = TranslationSerializer(record)
         json_data = JSONRenderer().render(serializer.data)
         return Response(json_data)
-        record.save()
-        
-
-        
-        print('data')
-        # http = HttpRequest()
-        # http.method = 'GET'
-        # http.content_params['key'] = API_KEY
-        # http.content_params['text'] = source_text
-        # http.content_params['lang'] = 'ru'
-        return Response(record)
-
-    # # Get called before object is saved to database
-    # def pre_save(self, obj):
-    #     obj.owner = self.request.user

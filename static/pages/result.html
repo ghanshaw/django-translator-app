@@ -1,6 +1,6 @@
-<div class="container-fluid result-container">
+<div class="container-fluid result-container" ng-class=" { grey: no_data }">
 
-    <div class="col-md-4 col-md-offset-4">
+    <div class="col-sm-6 col-sm-offset-3 col-lg-4 col-lg-offset-4">
     
         <div class="source-row row">
             <div class="source">{{ source_text }}</div>
@@ -16,7 +16,11 @@
         </div>
 
         <div class="row button-row">
-            <button><a href="#">New Translation</a></button>
+            <a href="#"><button>New Translation</button></a>
+        </div>
+
+        <div class="row credit-row">
+            <p>Powered by <a href="http://translate.yandex.com/" target="_blank">Yandex.Translate</a></p>
         </div>
     </div>
 </div>

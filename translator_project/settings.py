@@ -19,10 +19,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'f4=m=*u($d@380i!*e2y)ploteow)hrj83h^4njy)q^o^f1nlz'
-
 # SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
 if 'DEBUG' in os.environ:
     DEBUG = False
 
@@ -30,10 +28,13 @@ ALLOWED_HOSTS = []
 if 'ALLOWED_HOSTS' in os.environ:
     ALLOWED_HOSTS.append(os.environ['ALLOWED_HOSTS'])
 
-# ALLOWED_HOSTS = [ 'localhost', 'translator.us-west-2.elasticbeanstalk.com' ]
-# ALLOWED_HOSTS = []
 
-# Application definition
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'f4=m=*u($d@380i!*e2y)ploteow)hrj83h^4njy)q^o^f1nlz'
+if not DEBUG:
+    SECRET_KEY = os.environ['SECRET_KEY']
+    
+
 
 INSTALLED_APPS = [
 
@@ -80,16 +81,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'translator_project.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
 
 if 'RDS_DB_NAME' in os.environ:
     DATABASES = {
@@ -153,10 +146,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = "www/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "..", "www", "static")
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
-    # os.path.join(BASE_DIR, "templates"),
 ]

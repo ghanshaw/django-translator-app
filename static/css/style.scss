@@ -1,6 +1,7 @@
 $blue: #00BCD4;
 $lightgrey: #eee;
 $darkgrey: #333;
+$mediumgrey: #aaa;
 
 html, body {
     background-color: white;
@@ -30,6 +31,10 @@ table {
 
 .history-container {
     padding-top: 60px;
+
+    .table-row {
+        margin-bottom: 60px;
+    }
 }
 
 .navbar {
@@ -46,13 +51,15 @@ table {
         left: 50%;
         margin-left: -100px !important;  /* 50% of your logo width */
         display: block;
+        z-index: 1000;
     }
 
     .nav.navbar-nav a {
         color: $darkgrey;
+        text-align: right;
 
-        &:hover {
-            background-color: white;
+        &:hover, &:focus {
+            background-color: transparent;
             text-decoration: underline;
         }
     }
@@ -67,6 +74,7 @@ textarea.source-input {
     border: none;
     font-size: 16px;
     padding: 20px;
+    resize: none;
 }   
 
 button {
@@ -75,6 +83,7 @@ button {
     width: 100%;
     height: 40px;
     border: none;
+    padding: 0px;
 
     a {
         color: white;
@@ -109,6 +118,9 @@ button {
     }
 
     .submit-row {
+        .wait {
+            height: 40px;
+        }
     }
 }
 
@@ -143,8 +155,31 @@ button {
         button {
             width: 100%;
         }
+
+        a {
+            width: 100%;
+            display: inline-block;
+        }
     }
 
+    .credit-row {
+        margin-top: 20px;
+        text-align: center;
+        color: $darkgrey;
+        a {
+            color: $blue;
+        }
+    }
+
+    &.grey {
+        color: $mediumgrey;
+        
+        .language {
+            &:first-child {
+                border-color: $mediumgrey;
+            }             
+        }
+    }
 
 
 }

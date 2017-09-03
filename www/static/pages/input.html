@@ -1,0 +1,40 @@
+<div class="container-fuild input-container"> 
+
+    <div class="col-md-4 col-md-offset-4">
+     
+        <div class="row textarea-row">
+            <textarea
+                ng-model="source_text"
+                ng-minlength="1"
+                class="source-input" 
+                placeholder="Enter text..."></textarea>
+        </div>
+
+        <div class="row select-row">
+            <select 
+                ng-model="target_lang" 
+                class="language-dropdown">
+                <option value="">---Select Language---</option>
+                <option ng-repeat="(key, val) in getLanguage()" value="{{ key }}">{{ val }}</option>
+            </select>
+        </div>
+
+        <div class="row submit-row">
+            <button 
+                class=""
+                ng-click="translate()">Submit</button>
+        </div>
+
+        <div class="row message-row">
+            <div 
+                ng-show="hasWarning()"
+                class="alert alert-warning" 
+                role="alert">{{ status.translate.warning }}</div>
+            <div
+                ng-show="hasError()" 
+                class="alert alert-error" 
+                role="alert">{{ status.translate.error }}</div>
+        </div>
+    
+    </div>
+</div>

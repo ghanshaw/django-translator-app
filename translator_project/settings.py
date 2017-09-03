@@ -23,9 +23,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'f4=m=*u($d@380i!*e2y)ploteow)hrj83h^4njy)q^o^f1nlz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if 'DEBUG' in os.environ:
+    DEBUG = False
 
-ALLOWED_HOSTS = [ 'localhost', 'translator.us-west-2.elasticbeanstalk.com' ]
+ALLOWED_HOSTS = []
+if 'ALLOWED_HOSTS' in os.environ:
+    ALLOWED_HOSTS.append(os.environ['ALLOWED_HOSTS'])
+
+# ALLOWED_HOSTS = [ 'localhost', 'translator.us-west-2.elasticbeanstalk.com' ]
 # ALLOWED_HOSTS = []
 
 # Application definition

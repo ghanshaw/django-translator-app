@@ -1,0 +1,95 @@
+html, body {
+  background-color: white;
+  color: #333;
+  font-weight: bold; }
+
+table {
+  width: 100%; }
+  table th, table td {
+    border: 2px solid white;
+    padding: 10px;
+    text-align: center;
+    background-color: #eee;
+    text-overflow: ellipsis;
+    max-width: 100px;
+    overflow: hidden;
+    white-space: nowrap; }
+  table th {
+    text-align: center;
+    text-decoration: underline; }
+
+.history-container {
+  padding-top: 60px; }
+
+.navbar {
+  position: relative;
+  height: 150px; }
+  .navbar .container-fluid {
+    padding: 10px 40px; }
+  .navbar .navbar-brand {
+    width: 200px;
+    position: absolute;
+    left: 50%;
+    margin-left: -100px !important;
+    /* 50% of your logo width */
+    display: block; }
+  .navbar .nav.navbar-nav a {
+    color: #333; }
+    .navbar .nav.navbar-nav a:hover {
+      background-color: white;
+      text-decoration: underline; }
+
+textarea.source-input {
+  width: 100%;
+  height: 200px;
+  margin: 0 auto;
+  display: block;
+  background-color: #eee;
+  border: none;
+  font-size: 16px;
+  padding: 20px; }
+
+button {
+  background-color: #00BCD4;
+  color: white;
+  width: 100%;
+  height: 40px;
+  border: none; }
+  button a {
+    color: white; }
+    button a:hover {
+      text-decoration: none;
+      color: white; }
+
+.input-container {
+  padding-top: 30px; }
+  .input-container .row {
+    padding: 15px 0px; }
+  .input-container .select-row select {
+    width: 100%;
+    height: 40px;
+    border-radius: 0px;
+    background-color: white;
+    -webkit-appearance: none;
+    border: 2px solid #333;
+    padding-left: 20px;
+    color: #333; }
+
+.result-container {
+  padding-top: 40px; }
+  .result-container .row {
+    padding: 10px 0px; }
+  .result-container .source, .result-container .target {
+    word-wrap: break-word;
+    width: 100%;
+    height: 200px;
+    background-color: #eee;
+    padding: 20px; }
+  .result-container .language-row .language {
+    text-align: center; }
+    .result-container .language-row .language:first-child {
+      border-right: 2px solid #333; }
+  .result-container .button-row button {
+    width: 100%; }
+
+/*# sourceMappingURL=style.css.map */

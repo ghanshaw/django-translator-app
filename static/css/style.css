@@ -26,6 +26,9 @@ table {
 .navbar {
   position: relative;
   height: 150px; }
+  @media (max-width: 450px) {
+    .navbar {
+      height: 90px; } }
   .navbar .container-fluid {
     padding: 10px 40px; }
   .navbar .navbar-brand {
@@ -36,6 +39,11 @@ table {
     /* 50% of your logo width */
     display: block;
     z-index: 1000; }
+    @media (max-width: 450px) {
+      .navbar .navbar-brand {
+        width: 120px;
+        margin-left: -60px !important;
+        top: 30px; } }
   .navbar .nav.navbar-nav a {
     color: #333;
     text-align: right; }

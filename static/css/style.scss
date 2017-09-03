@@ -41,6 +41,12 @@ table {
     position: relative;
     height: 150px;
 
+    // Mobile Screens
+    @media (max-width: 450px) {
+        height: 90px;
+    }
+    
+
     .container-fluid {
         padding: 10px 40px;
     
@@ -52,6 +58,13 @@ table {
         margin-left: -100px !important;  /* 50% of your logo width */
         display: block;
         z-index: 1000;
+
+        // Mobile Screens
+		@media (max-width: 450px) {
+            width: 120px;
+            margin-left: -60px !important;
+            top: 30px;
+		}
     }
 
     .nav.navbar-nav a {

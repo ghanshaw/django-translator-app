@@ -1,7 +1,7 @@
 # translation-app
 This is a translation app built with Django and AngularJS.
 
-The name of this app is Salvē (from the Latin word for "hello"). You can view the live project [here][1]. I implemented it with the following technologies:
+The name of this app is **Salvē** (from the Latin word for *hello*). You can view the live project [here][1]. I implemented it with the following technologies:
 
 
 - Backend/Rest Framework: Django (Django Rest Framework)

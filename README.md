@@ -1,7 +1,7 @@
 # translation-app
 This is a translation app built with Django and AngularJS.
 
-The name of this app is Salvē (from the Latin word for "hello"). You can view the live project [here] (http://translator.us-west-2.elasticbeanstalk.com). I implemented it with the following technologies:
+The name of this app is Salvē (from the Latin word for "hello"). You can view the live project [here][1]. I implemented it with the following technologies:
 
 
 - Backend/Rest Framework: Django (Django Rest Framework)
@@ -21,5 +21,6 @@ Finally, the response is serialized and sent back to the client. If there is no 
 
 Lastly, the user can view all previous translations via the History page, accessiable from the link in the header.
 
+[1]: http://translator.us-west-2.elasticbeanstalk.com
 
 

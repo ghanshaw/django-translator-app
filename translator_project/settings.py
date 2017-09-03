@@ -25,7 +25,7 @@ SECRET_KEY = 'f4=m=*u($d@380i!*e2y)ploteow)hrj83h^4njy)q^o^f1nlz'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['50.112.126.191']
 
 
 # Application definition
@@ -86,16 +86,28 @@ WSGI_APPLICATION = 'translator_project.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'translations',                      
-        'USER': 'postgres',
-        'PASSWORD': 'password',
-        'HOST': '',
-        'PORT': '',
+if 'RDS_DB_NAME' in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': os.environ['RDS_DB_NAME'],
+            'USER': os.environ['RDS_USERNAME'],
+            'PASSWORD': os.environ['RDS_PASSWORD'],
+            'HOST': os.environ['RDS_HOSTNAME'],
+            'PORT': os.environ['RDS_PORT'],
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'translations',                      
+            'USER': 'postgres',
+            'PASSWORD': 'password',
+            'HOST': '',
+            'PORT': '',
+        }
+    }
 
 
 # Password validation

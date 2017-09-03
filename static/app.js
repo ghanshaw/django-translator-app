@@ -169,7 +169,7 @@ translateApp.service('translationService', function($http, $rootScope, $location
     this.translate = function(source_text, target_lang) {
             
         // Limit length of input
-        let limit = 300;
+        let limit = 1000;
 
         // Clear messages
         this.status.translate.warning = '';

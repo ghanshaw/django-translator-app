@@ -7,7 +7,7 @@ The name of this app is **Salvē** (from the Latin word for *hello*). You can vi
 - Backend/Rest Framework: Django (Django Rest Framework)
 - Frontend Framework: AngularJS
 - Language detection and translation: Yandex
-- Hosting: ElasticBeanstalk (AWS)
+- Hosting: Elastic Beanstalk (AWS)
 - Database: Postgres
 - Version control: Github
 

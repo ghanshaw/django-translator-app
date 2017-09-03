@@ -90,9 +90,10 @@ button {
   .result-container .source, .result-container .target {
     word-wrap: break-word;
     width: 100%;
-    height: 200px;
+    min-height: 200px;
     background-color: #eee;
-    padding: 20px; }
+    padding: 20px;
+    overflow: hidden; }
   .result-container .language-row .language {
     text-align: center; }
     .result-container .language-row .language:first-child {
